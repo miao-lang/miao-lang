@@ -9,7 +9,6 @@ var js_base64_1 = require("js-base64");
 var b64 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=';
 // const codes = ['0', '1234']
 var codes = ['\u200b', '\u200c\u200d'];
-// const codes = ['\u200b', '\u200c\u200d']
 // const codes = [
 //   '\u200b',
 //   '\u0300\u0301\u0302\u0303\u0304\u0306\u0307\u0308\u0309\u030a\u030b\u030c\u030d\u030e\u030f\u0310\u0311'
@@ -99,7 +98,7 @@ var human2miao = function (t) {
 };
 exports.human2miao = human2miao;
 var miao2human = function (t) {
-    t = t.replace(/[喵，。？！～]/ig, '');
+    t = t.replace(/[^\u200b\u200c\u200d]/ig, '');
     for (var idx = table.length; idx >= 0; idx--) {
         var reg = new RegExp(table[idx], 'ig');
         t = t.replace(reg, b64.charAt(idx));

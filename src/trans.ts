@@ -8,7 +8,6 @@ import { Base64 } from 'js-base64'
 const b64 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/='
 // const codes = ['0', '1234']
 const codes = ['\u200b', '\u200c\u200d']
-// const codes = ['\u200b', '\u200c\u200d']
 // const codes = [
 //   '\u200b',
 //   '\u0300\u0301\u0302\u0303\u0304\u0306\u0307\u0308\u0309\u030a\u030b\u030c\u030d\u030e\u030f\u0310\u0311'
@@ -111,7 +110,7 @@ export const human2miao = (t: string): string => {
 }
 
 export const miao2human = (t: string): string => {
-  t = t.replace(/[喵，。？！～]/ig, '')
+  t = t.replace(/[^\u200b\u200c\u200d]/ig, '')
 
   for (let idx = table.length; idx >= 0; idx--) {
     let reg = new RegExp(table[idx], 'ig')
