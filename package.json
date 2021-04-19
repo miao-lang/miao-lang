@@ -1,0 +1,51 @@
+{
+  "name": "miao-lang",
+  "version": "1.0.0",
+  "description": "A language of Miao.",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build:0": "cross-env NODE_ENV=production webpack --config scripts/webpack.main.prod.config.js",
+    "build": "cross-env NODE_ENV=production tsc -P tsconfig.json && tscpaths -p tsconfig.json -s src -o build",
+    "test": "mocha -r espower-typescript/guess -r tsconfig-paths/register \"test/**/*.test.ts\"",
+    "p": "npm run build && npm publish --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miao-lang/miao-lang.git"
+  },
+  "author": "oldj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miao-lang/miao-lang/issues"
+  },
+  "homepage": "https://github.com/miao-lang/miao-lang#readme",
+  "dependencies": {
+    "js-base64": "^3.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-decorators": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/assert": "^1.5.4",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^14.14.41",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "espower-typescript": "^10.0.0",
+    "fork-ts-checker-webpack-plugin": "^6.2.1",
+    "mocha": "^8.3.2",
+    "power-assert": "^1.6.1",
+    "ts-loader": "^9.0.0",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
+    "tscpaths": "0.0.9",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-merge": "^5.7.3"
+  }
+}
