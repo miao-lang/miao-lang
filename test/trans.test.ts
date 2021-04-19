@@ -4,7 +4,7 @@
  */
 
 import assert = require('assert')
-import { human2miao, miao2human } from 'src/trans'
+import { human2miao, miao2human } from '../src/trans'
 
 describe('trans test', () => {
 

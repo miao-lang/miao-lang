@@ -19,9 +19,7 @@
     "declaration": true
   },
   "include": [
-    "mock/**/*",
     "src/**/*",
-    "test/**/*",
     "typings.d.ts"
   ],
   "exclude": [
@@ -32,5 +30,6 @@
     "typings",
     "**/__test__",
     "docs",
+    "test"
   ]
 }
