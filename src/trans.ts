@@ -109,8 +109,12 @@ export const human2miao = (t: string): string => {
   return addMiao(data)
 }
 
+const clean = (t: string): string => {
+  return t.replace(/[^\u200b\u200c\u200d]/ig, '')
+}
+
 export const miao2human = (t: string): string => {
-  t = t.replace(/[^\u200b\u200c\u200d]/ig, '')
+  t = clean(t)
 
   for (let idx = table.length; idx >= 0; idx--) {
     let reg = new RegExp(table[idx], 'ig')
@@ -120,4 +124,12 @@ export const miao2human = (t: string): string => {
   t = Base64.decode(t)
 
   return t
+}
+
+/**
+ * 判断一个字符串是否是喵语言
+ */
+export const isMiao = (t: string): boolean => {
+  if (!t) return false
+  return clean(t).length > 0
 }

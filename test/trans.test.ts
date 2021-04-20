@@ -4,7 +4,7 @@
  */
 
 import assert = require('assert')
-import { human2miao, miao2human } from '../src/trans'
+import { human2miao, miao2human, isMiao } from '../src/trans'
 
 describe('trans test', () => {
 
@@ -35,12 +35,15 @@ describe('trans test', () => {
   })
 
   it('random string test', () => {
-    for (let i = 0; i < 500; i ++) {
+    for (let i = 0; i < 500; i++) {
       let len = Math.floor(Math.random() * 1000) + 1
       let msg = makeRndString(len)
-      let s = human2miao(msg)
-      assert(msg !== s)
-      assert(msg === miao2human(s))
+      let miao_msg = human2miao(msg)
+      assert(msg !== miao_msg)
+      assert(msg === miao2human(miao_msg))
+
+      assert(!isMiao(msg))
+      assert(isMiao(miao_msg))
     }
   })
 })

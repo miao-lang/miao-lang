@@ -10,5 +10,6 @@ exports.default = {
     miao2human: trans_1.miao2human,
     encode: trans_1.human2miao,
     decode: trans_1.miao2human,
+    isMiao: trans_1.isMiao,
 };
 //# sourceMappingURL=index.js.map

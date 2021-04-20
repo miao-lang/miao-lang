@@ -4,7 +4,7 @@
  * @homepage: https://oldj.net
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.miao2human = exports.human2miao = void 0;
+exports.isMiao = exports.miao2human = exports.human2miao = void 0;
 var js_base64_1 = require("js-base64");
 var b64 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=';
 // const codes = ['0', '1234']
@@ -97,8 +97,11 @@ var human2miao = function (t) {
     return addMiao(data);
 };
 exports.human2miao = human2miao;
+var clean = function (t) {
+    return t.replace(/[^\u200b\u200c\u200d]/ig, '');
+};
 var miao2human = function (t) {
-    t = t.replace(/[^\u200b\u200c\u200d]/ig, '');
+    t = clean(t);
     for (var idx = table.length; idx >= 0; idx--) {
         var reg = new RegExp(table[idx], 'ig');
         t = t.replace(reg, b64.charAt(idx));
@@ -107,4 +110,13 @@ var miao2human = function (t) {
     return t;
 };
 exports.miao2human = miao2human;
+/**
+ * 判断一个字符串是否是喵语言
+ */
+var isMiao = function (t) {
+    if (!t)
+        return false;
+    return clean(t).length > 0;
+};
+exports.isMiao = isMiao;
 //# sourceMappingURL=trans.js.map

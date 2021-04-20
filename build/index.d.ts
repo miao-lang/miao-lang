@@ -7,5 +7,6 @@ declare const _default: {
     miao2human: (t: string) => string;
     encode: (t: string) => string;
     decode: (t: string) => string;
+    isMiao: (t: string) => boolean;
 };
 export default _default;

@@ -31,6 +31,12 @@ console.log(msg2) // Hello 喵星人！
 console.log(msg2 === human_msg) // true
 ```
 
+### API
+
+ - `Miao.encode(t: string): string` 将普通文本转为喵语言
+ - `Miao.decode(t: string): string` 将喵语言转为普通文本
+ - `Miao.isMiao(t: string): string` 判断输入的文本是否为喵语言
+
 ## 工作原理
 
 喵语言本质上是一种文本编码、解码算法，其原理为使用零宽字符将原文编码，并隐藏于若干“喵”之中。目前版本中所用到的零宽字符有 `\u200b`、`\u200c`、`\u200d` 。
