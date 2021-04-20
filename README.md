@@ -28,7 +28,7 @@ console.log(miao_msg) // 喵​‍‍‌‌‌​‌‍‍‌‌​‍‍‌‍�
 let msg2 = Miao.decode(miao_msg)
 
 console.log(msg2) // Hello 喵星人！
-consoel.log(msg2 === human_msg) // true
+console.log(msg2 === human_msg) // true
 ```
 
 ## 工作原理
