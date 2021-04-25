@@ -33,9 +33,26 @@ console.log(msg2 === human_msg) // true
 
 ### API
 
- - `Miao.encode(t: string): string` 将普通文本转为喵语言
+ - `Miao.encode(t: string, options: Human2miaoOptions): string` 将普通文本转为喵语言
  - `Miao.decode(t: string): string` 将喵语言转为普通文本
  - `Miao.isMiao(t: string): string` 判断输入的文本是否为喵语言
+
+#### Types
+
+- `Human2miaoOptions`
+  - `calls`: `string` 动物叫声, 如: `汪`, `咕`, `嗷`
+
+### 多种族化
+
+示例:
+```ts
+import Miao from 'miao-lang'
+
+let human_msg = 'Hello 鸽子精！'
+let gu_msg = Miao.encode(human_msg, { calls: '咕' })
+
+console.log(gu_msg) // 咕咕咕咕。
+```
 
 ## 工作原理
 
