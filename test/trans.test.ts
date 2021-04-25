@@ -12,11 +12,15 @@ describe('trans test', () => {
     const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/='
       + '`~!@#$%^&*()_+-=[]{}\\|:;\'",./<>?'
       + '喵语博大精深，虽然只有一个“喵”的发音，但内涵十分丰富，据研究，在各个“喵”之间有着大量人眼不可见的复杂细节。'
-    const n = characters.length
+    // + '😀😂😍🐶🐱🐰🍏🍎🍓🍉🥏🏹⛸🚗🚎🚒🕹💿📸❤️💔💘🏳️🏴'
+    // + '👶👶🏻👶🏼👶🏽👶🏾👶🏿'
+    // @ts-ignore
+    const chars = [...characters]
+    const n = chars.length
 
     let s = ''
     while (s.length < len) {
-      s += characters.charAt(Math.floor(Math.random() * n))
+      s += chars[Math.floor(Math.random() * n)]
     }
 
     return s
@@ -29,6 +33,11 @@ describe('trans test', () => {
     assert(msg === miao2human(s))
 
     msg = '愿喵之力与你同在！May the power of Miao be with you!'
+    s = human2miao(msg)
+    assert(msg !== s)
+    assert(msg === miao2human(s))
+
+    msg = 'with emoji 👶👶🏻👶🏼😺😸😹 123'
     s = human2miao(msg)
     assert(msg !== s)
     assert(msg === miao2human(s))
