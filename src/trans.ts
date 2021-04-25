@@ -83,7 +83,7 @@ const addPunctuations = (t: string, calls: string): string => {
     }
   }
 
-  t = `${calls}${a.join('')}${calls}。`;
+  t = `${calls}${a.join('')}${calls}。`
 
   return t
 }
@@ -96,11 +96,12 @@ const addCalls = (t: string, calls: string): string => {
   return t
 }
 
-interface Human2miaoOptions {
+export interface Human2miaoOptions {
   calls: string;
 }
+
 export const human2miao = (t: string, options?: Human2miaoOptions): string => {
-  const { calls = '喵' } = options ?? {};
+  const { calls = '喵' } = options ?? {}
   t = Base64.encode(t)
   let len = t.length
   let arr = []

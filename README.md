@@ -33,7 +33,7 @@ console.log(msg2 === human_msg) // true
 
 ### API
 
- - `Miao.encode(t: string, options: Human2miaoOptions): string` 将普通文本转为喵语言
+ - `Miao.encode(t: string, options?: Human2miaoOptions): string` 将普通文本转为喵语言
  - `Miao.decode(t: string): string` 将喵语言转为普通文本
  - `Miao.isMiao(t: string): string` 判断输入的文本是否为喵语言
 

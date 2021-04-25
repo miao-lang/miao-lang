@@ -43,7 +43,7 @@ var makeTable = function () {
     }
 };
 makeTable();
-var addPunctuations = function (t) {
+var addPunctuations = function (t, calls) {
     var a = t.split('');
     var idx = 0;
     while (idx < a.length) {
@@ -53,7 +53,7 @@ var addPunctuations = function (t) {
         if (!a[idx]) {
             break;
         }
-        a[idx] += '喵';
+        a[idx] += calls;
         var mod = idx % 32;
         switch (mod) {
             case 0:
@@ -76,14 +76,18 @@ var addPunctuations = function (t) {
                 break;
         }
     }
-    t = '喵' + a.join('') + '喵。';
+    t = "" + calls + a.join('') + calls + "\u3002";
     return t;
 };
-var addMiao = function (t) {
-    t = addPunctuations(t);
+/**
+ * Add Animal Calls
+ */
+var addCalls = function (t, calls) {
+    t = addPunctuations(t, calls);
     return t;
 };
-var human2miao = function (t) {
+var human2miao = function (t, options) {
+    var _a = (options !== null && options !== void 0 ? options : {}).calls, calls = _a === void 0 ? '喵' : _a;
     t = js_base64_1.Base64.encode(t);
     var len = t.length;
     var arr = [];
@@ -94,7 +98,7 @@ var human2miao = function (t) {
         arr.push(table[n]);
     }
     var data = arr.join('');
-    return addMiao(data);
+    return addCalls(data, calls);
 };
 exports.human2miao = human2miao;
 var clean = function (t) {

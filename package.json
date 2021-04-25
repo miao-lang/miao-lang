@@ -1,6 +1,6 @@
 {
   "name": "miao-lang",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A language of Miao.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -8,7 +8,7 @@
     "build:0": "cross-env NODE_ENV=production webpack --config scripts/webpack.main.prod.config.js",
     "build": "cross-env NODE_ENV=production tsc -P tsconfig.json && tscpaths -p tsconfig.json -s src -o build",
     "test": "mocha -r espower-typescript/guess -r tsconfig-paths/register \"test/**/*.test.ts\"",
-    "p": "npm run build && npm publish --access public"
+    "p": "npm run test && npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",
