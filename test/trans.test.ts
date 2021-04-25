@@ -46,4 +46,11 @@ describe('trans test', () => {
       assert(isMiao(miao_msg))
     }
   })
+
+  it('support others animals calls', () => {
+    let msg = 'Hello 鸽子精！'
+    let s = human2miao(msg, { calls: '咕' })
+    assert(msg !== s)
+    assert(msg === miao2human(s))
+  })
 })

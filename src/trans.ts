@@ -47,7 +47,7 @@ const makeTable = () => {
 
 makeTable()
 
-const addPunctuations = (t: string): string => {
+const addPunctuations = (t: string, calls: string): string => {
   let a = t.split('')
   let idx = 0
 
@@ -59,7 +59,7 @@ const addPunctuations = (t: string): string => {
       break
     }
 
-    a[idx] += '喵'
+    a[idx] += calls
     let mod = idx % 32
     switch (mod) {
       case 0:
@@ -83,17 +83,24 @@ const addPunctuations = (t: string): string => {
     }
   }
 
-  t = '喵' + a.join('') + '喵。'
+  t = `${calls}${a.join('')}${calls}。`;
 
   return t
 }
 
-const addMiao = (t: string): string => {
-  t = addPunctuations(t)
+/**
+ * Add Animal Calls
+ */
+const addCalls = (t: string, calls: string): string => {
+  t = addPunctuations(t, calls)
   return t
 }
 
-export const human2miao = (t: string): string => {
+interface Human2miaoOptions {
+  calls: string;
+}
+export const human2miao = (t: string, options?: Human2miaoOptions): string => {
+  const { calls = '喵' } = options ?? {};
   t = Base64.encode(t)
   let len = t.length
   let arr = []
@@ -106,7 +113,7 @@ export const human2miao = (t: string): string => {
   }
 
   let data = arr.join('')
-  return addMiao(data)
+  return addCalls(data, calls)
 }
 
 const clean = (t: string): string => {
