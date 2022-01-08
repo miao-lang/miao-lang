@@ -1,6 +1,6 @@
 {
   "name": "miao-lang",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A language of Miao.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
