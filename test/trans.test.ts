@@ -3,8 +3,8 @@
  * @homepage: https://oldj.net
  */
 
-import assert = require('assert')
-import { human2miao, miao2human, isMiao } from '../src/trans'
+import { assert } from 'chai'
+import { human2miao, isMiao, miao2human } from '../src/trans'
 
 describe('trans test', () => {
 
@@ -15,7 +15,7 @@ describe('trans test', () => {
     // + '😀😂😍🐶🐱🐰🍏🍎🍓🍉🥏🏹⛸🚗🚎🚒🕹💿📸❤️💔💘🏳️🏴'
     // + '👶👶🏻👶🏼👶🏽👶🏾👶🏿'
     // @ts-ignore
-    const chars = [...characters]
+    const chars = [...characters.split('')]
     const n = chars.length
 
     let s = ''
@@ -29,18 +29,18 @@ describe('trans test', () => {
   it('basic test', () => {
     let msg = 'Hello 喵星人！'
     let s = human2miao(msg)
-    assert(msg !== s)
-    assert(msg === miao2human(s))
+    assert.notEqual(msg, s)
+    assert.equal(msg, miao2human(s))
 
     msg = '愿喵之力与你同在！May the power of Miao be with you!'
     s = human2miao(msg)
-    assert(msg !== s)
-    assert(msg === miao2human(s))
+    assert.notEqual(msg, s)
+    assert.equal(msg, miao2human(s))
 
     msg = 'with emoji 👶👶🏻👶🏼😺😸😹 123'
     s = human2miao(msg)
-    assert(msg !== s)
-    assert(msg === miao2human(s))
+    assert.notEqual(msg, s)
+    assert.equal(msg, miao2human(s))
   })
 
   it('random string test', () => {
@@ -48,26 +48,26 @@ describe('trans test', () => {
       let len = Math.floor(Math.random() * 1000) + 1
       let msg = makeRndString(len)
       let miao_msg = human2miao(msg)
-      assert(msg !== miao_msg)
-      assert(msg === miao2human(miao_msg))
+      assert.notEqual(msg, miao_msg)
+      assert.equal(msg, miao2human(miao_msg))
 
-      assert(!isMiao(msg))
-      assert(isMiao(miao_msg))
+      assert.isFalse(isMiao(msg))
+      assert.isTrue(isMiao(miao_msg))
     }
   })
 
   it('support others animals calls', () => {
     let msg = 'Hello 鸽子精！'
     let s = human2miao(msg, { calls: '咕' })
-    assert(msg !== s)
-    assert(msg === miao2human(s))
+    assert.notEqual(msg, s)
+    assert.equal(msg, miao2human(s))
   })
 
   it('support i18n', () => {
     let msg = 'Hello Guys.'
     let s = human2miao(msg, { calls: 'Meow ', halfwidthSymbol: true })
 
-    assert(msg !== s)
-    assert(msg === miao2human(s))
+    assert.notEqual(msg, s)
+    assert.equal(msg, miao2human(s))
   })
 })

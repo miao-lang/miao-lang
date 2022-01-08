@@ -31,7 +31,7 @@ var makeTable = function () {
             for (var j = 0; j < table_len; j++) {
                 if (table.length >= char_count)
                     break;
-                var t = "" + c + table[j];
+                var t = "".concat(c).concat(table[j]);
                 if (!table.includes(t)) {
                     table.push(t);
                 }
@@ -77,7 +77,7 @@ var addPunctuations = function (t, options) {
                 break;
         }
     }
-    t = "" + calls + a.join('') + calls + (halfwidthSymbol ? '.' : '。');
+    t = "".concat(calls).concat(a.join('')).concat(calls).concat(halfwidthSymbol ? '.' : '。');
     return t;
 };
 /**
