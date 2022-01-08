@@ -47,7 +47,13 @@ const makeTable = () => {
 
 makeTable()
 
-const addPunctuations = (t: string, calls: string): string => {
+export interface Human2miaoOptions {
+  calls?: string;
+  halfwidthSymbol?: boolean;
+}
+
+const addPunctuations = (t: string, options?: Human2miaoOptions): string => {
+  const { calls = '喵', halfwidthSymbol = false } = options ?? {}
   let a = t.split('')
   let idx = 0
 
@@ -66,24 +72,24 @@ const addPunctuations = (t: string, calls: string): string => {
       case 1:
       case 2:
       case 3:
-        a[idx] += '，'
+        a[idx] += halfwidthSymbol ? ',' : '，'
         break
       case 7:
-        a[idx] += '。'
+        a[idx] += halfwidthSymbol ? '.' : '。'
         break
       case 8:
-        a[idx] += '？'
+        a[idx] += halfwidthSymbol ? '?' : '？'
         break
       case 9:
-        a[idx] += '！'
+        a[idx] += halfwidthSymbol ? '!' : '！'
         break
       case 10:
-        a[idx] += '～'
+        a[idx] += halfwidthSymbol ? '~' : '～'
         break
     }
   }
 
-  t = `${calls}${a.join('')}${calls}。`
+  t = `${calls}${a.join('')}${calls}${halfwidthSymbol ? '.' : '。'}`
 
   return t
 }
@@ -91,17 +97,12 @@ const addPunctuations = (t: string, calls: string): string => {
 /**
  * Add Animal Calls
  */
-const addCalls = (t: string, calls: string): string => {
-  t = addPunctuations(t, calls)
+const addCalls = (t: string, options?: Human2miaoOptions): string => {
+  t = addPunctuations(t, options)
   return t
 }
 
-export interface Human2miaoOptions {
-  calls: string;
-}
-
 export const human2miao = (t: string, options?: Human2miaoOptions): string => {
-  const { calls = '喵' } = options ?? {}
   t = Base64.encode(t)
   let len = t.length
   let arr = []
@@ -114,7 +115,7 @@ export const human2miao = (t: string, options?: Human2miaoOptions): string => {
   }
 
   let data = arr.join('')
-  return addCalls(data, calls)
+  return addCalls(data, options)
 }
 
 const clean = (t: string): string => {

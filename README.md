@@ -41,6 +41,7 @@ console.log(msg2 === human_msg) // true
 
 - `Human2miaoOptions`
   - `calls`: `string` 动物叫声, 如: `汪`, `咕`, `嗷`
+  - `halfwidthSymbol`: `boolean` 是否使用半角符号，如`,.?!`
 
 ### 多种族化
 
@@ -53,6 +54,19 @@ let gu_msg = Miao.encode(human_msg, { calls: '咕' })
 
 console.log(gu_msg) // 咕咕咕咕。
 ```
+
+### 国际化
+
+示例:
+```ts
+import Miao from 'miao-lang'
+
+let human_msg = 'Hello Guys.'
+let msg = Miao.encode(human_msg, { calls: 'Meow ', halfwidthSymbol: true})
+
+console.log(msg) // Meow ​‍‍‌‌‌​‌‍‍‌‌​‍‍‌‍‍​‍‍‍‌​‍‌‍​‌‍‍‌‌​‌‍‌​‌‌‍‌​‍‌Meow ‍‍‍​‌‍​‍‍‌‍‍​‍‍​‍‍‌​‌‌‍‌‌​‍‌​‌‌‌‌‍‌Meow .
+```
+
 
 ## 工作原理
 
