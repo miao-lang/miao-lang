@@ -62,4 +62,12 @@ describe('trans test', () => {
     assert(msg !== s)
     assert(msg === miao2human(s))
   })
+
+  it('support i18n', () => {
+    let msg = 'Hello Guys.'
+    let s = human2miao(msg, { calls: 'Meow ', halfwidthSymbol: true })
+
+    assert(msg !== s)
+    assert(msg === miao2human(s))
+  })
 })
