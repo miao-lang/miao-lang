@@ -102,7 +102,7 @@ var human2miao = function (t, options) {
 };
 exports.human2miao = human2miao;
 var clean = function (t) {
-    return t.replace(/[^\u200b\u200c\u200d]/ig, '');
+    return t.replace(/[^\u200b\u200c\u200d]/gi, '');
 };
 var miao2human = function (t) {
     t = clean(t);

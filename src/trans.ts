@@ -48,8 +48,8 @@ const makeTable = () => {
 makeTable()
 
 export interface Human2miaoOptions {
-  calls?: string;
-  halfwidthSymbol?: boolean;
+  calls?: string
+  halfwidthSymbol?: boolean
 }
 
 const addPunctuations = (t: string, options?: Human2miaoOptions): string => {
@@ -119,7 +119,7 @@ export const human2miao = (t: string, options?: Human2miaoOptions): string => {
 }
 
 const clean = (t: string): string => {
-  return t.replace(/[^\u200b\u200c\u200d]/ig, '')
+  return t.replace(/[^\u200b\u200c\u200d]/gi, '')
 }
 
 export const miao2human = (t: string): string => {

@@ -7,11 +7,11 @@ import { assert } from 'chai'
 import { human2miao, isMiao, miao2human } from '../src/trans'
 
 describe('trans test', () => {
-
   const makeRndString = (len: number): string => {
-    const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/='
-      + '`~!@#$%^&*()_+-=[]{}\\|:;\'",./<>?'
-      + '喵语博大精深，虽然只有一个“喵”的发音，但内涵十分丰富，据研究，在各个“喵”之间有着大量人眼不可见的复杂细节。'
+    const characters =
+      '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/=' +
+      '`~!@#$%^&*()_+-=[]{}\\|:;\'",./<>?' +
+      '喵语博大精深，虽然只有一个“喵”的发音，但内涵十分丰富，据研究，在各个“喵”之间有着大量人眼不可见的复杂细节。'
     // + '😀😂😍🐶🐱🐰🍏🍎🍓🍉🥏🏹⛸🚗🚎🚒🕹💿📸❤️💔💘🏳️🏴'
     // + '👶👶🏻👶🏼👶🏽👶🏾👶🏿'
     // @ts-ignore
